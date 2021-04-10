@@ -1,6 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { v4 as uuid } from 'uuid';
 
 import { Cryptography, QRCodeService } from '#Modules/QRCode';
+
+const id = uuid();
 
 describe('In QRCodeService', () => {
   let qrCodeService: QRCodeService;
@@ -17,10 +20,12 @@ describe('In QRCodeService', () => {
     });
 
     it('should return encrypted base64 image', async () => {
-      jest.spyOn(cryptography, 'encryptData').mockReturnValue('data');
-      await qrCodeService.addDataToQRCode('Test');
+      jest.spyOn(cryptography, 'encryptData').mockReturnValue(id);
 
-      expect(cryptography.encryptData).toBeCalledWith('Test');
+      const promise = qrCodeService.addDataToQRCode(id);
+
+      await expect(promise).resolves.toContain('data:image/png;base64');
+      expect(cryptography.encryptData).toBeCalledWith(id);
       expect(cryptography.encryptData).toBeCalledTimes(1);
     });
   });
