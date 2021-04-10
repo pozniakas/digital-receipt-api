@@ -1,8 +1,10 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 
 import { DigitalReceiptService } from './DigitalReceipt.service';
+import { AuthGuard } from './Guard/customAuthGuard';
 import { IDigitalReceipt } from './types';
 
+@UseGuards(AuthGuard)
 @Controller('/digital-receipt')
 export class DigitalReceiptController {
   constructor(private digitalReceiptService: DigitalReceiptService) {}
