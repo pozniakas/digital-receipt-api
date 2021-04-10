@@ -1,12 +1,12 @@
+import { QRCodeService } from '#Modules/QRCode/QRCode.service';
 import { Controller, Get } from '@nestjs/common';
-import { StartService } from './start.service';
 
 @Controller()
 export class StartController {
-  constructor(private readonly startService: StartService) {}
+  constructor(private readonly qrCodeService: QRCodeService) {}
 
   @Get()
-  getHello(): string {
-    return this.startService.getHello();
+  getHello(): Promise<string> {
+    return this.qrCodeService.addDataToQrCode('Tavo Tevas');
   }
 }
