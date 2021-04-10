@@ -1,9 +1,11 @@
-import { CryptographyService } from '#Modules/Cryptography/Cryptography.service';
 import { Module } from '@nestjs/common';
+
+import { CryptographyModule } from '#Modules/Cryptography/Cryptography.module';
+
 import { QrCodeService } from './QRCode.service';
 
 @Module({
   providers: [QrCodeService],
-  imports: [CryptographyService],
+  imports: [CryptographyModule],
 })
 export class QrCodeModule {}
