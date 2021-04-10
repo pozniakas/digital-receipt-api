@@ -28,23 +28,23 @@ describe('In DigitalReceiptController', () => {
     digitalReceiptController = module.get<DigitalReceiptController>(
       DigitalReceiptController,
     );
+  });
 
-    const id = uuid();
+  const id = uuid();
 
-    it('calling getDigitalReceipt controller should call getDigitalReceipt service method', async () => {
-      digitalReceiptController.getDigitalReceipt(id);
+  it('calling getDigitalReceipt controller should call getDigitalReceipt service method', async () => {
+    digitalReceiptController.getDigitalReceipt(id);
 
-      expect(digitalReceiptService.getDigitalReceipt).toBeCalledTimes(1);
-      expect(digitalReceiptService.getDigitalReceipt).toBeCalledWith(id);
-    });
+    expect(digitalReceiptService.getDigitalReceipt).toBeCalledTimes(1);
+    expect(digitalReceiptService.getDigitalReceipt).toBeCalledWith(id);
+  });
 
-    it('calling generateDigitalReceipt controller should call generateDigitalReceipt service method', async () => {
-      digitalReceiptController.generateDigitalReceipt(mockDigitalReceipt);
+  it('calling generateDigitalReceipt controller should call generateDigitalReceipt service method', async () => {
+    digitalReceiptController.generateDigitalReceipt(mockDigitalReceipt);
 
-      expect(digitalReceiptService.generateDigitalReceipt).toBeCalledTimes(1);
-      expect(digitalReceiptService.generateDigitalReceipt).toBeCalledWith(
-        mockDigitalReceipt,
-      );
-    });
+    expect(digitalReceiptService.generateDigitalReceipt).toBeCalledTimes(1);
+    expect(digitalReceiptService.generateDigitalReceipt).toBeCalledWith(
+      mockDigitalReceipt,
+    );
   });
 });
