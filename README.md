@@ -4,16 +4,6 @@
 
 - Fill environment variables
 
-# Meedio Notification Microservice
-
-**How to run this microservice?**
-
-- Start running Meedio Redis, MySQL, Mongo servers in Docker containers
-
-- `cp .env.example .env`
-
-- Fill environment variables
-
 ```
 .env file in development environment:
 NODE_ENV=development
