@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { QrCodeService } from '../QRCode.service';
+import { QRCodeService } from '../QRCode.service';
 
 describe('QrCodeService', () => {
-  let service: QrCodeService;
+  let service: QRCodeService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [QrCodeService],
+      providers: [QRCodeService],
     }).compile();
 
-    service = module.get<QrCodeService>(QrCodeService);
+    service = module.get<QRCodeService>(QRCodeService);
   });
 
   it('should be defined', () => {
