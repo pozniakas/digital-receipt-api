@@ -1,10 +1,13 @@
+import { BaseEntity } from 'typeorm';
+
 export interface IDigitalReceipt {
-  id: string;
   amount: number;
   trTime: Date;
   counterParty: string;
   paymentMethod: PaymentMethod;
 }
+
+export interface IDigitalReceiptEntity extends IDigitalReceipt, BaseEntity {}
 
 export enum PaymentMethod {
   CASH = 'CASH',

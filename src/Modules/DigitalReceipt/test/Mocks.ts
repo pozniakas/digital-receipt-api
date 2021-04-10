@@ -1,6 +1,9 @@
-import { v4 as uuid } from 'uuid';
 import faker from 'faker';
-import { IDigitalReceipt, PaymentMethod } from '../types';
+import {
+  IDigitalReceipt,
+  IDigitalReceiptEntity,
+  PaymentMethod,
+} from '#Modules/DigitalReceipt/types';
 
 export const generateMockDigitalReceiptService = () => ({
   generateDigitalReceipt: jest.fn(),
@@ -8,9 +11,26 @@ export const generateMockDigitalReceiptService = () => ({
 });
 
 export const mockDigitalReceipt: IDigitalReceipt = {
-  id: uuid(),
   amount: parseInt(faker.finance.amount(1, 1000, 2)),
   trTime: new Date(),
   counterParty: faker.lorem.word(10),
   paymentMethod: PaymentMethod.CASH,
 };
+
+export const mockDigitalReceiptEntity: IDigitalReceiptEntity = {
+  amount: parseInt(faker.finance.amount(1, 1000, 2)),
+  trTime: new Date(),
+  counterParty: faker.lorem.word(10),
+  paymentMethod: PaymentMethod.CASH,
+  save: jest.fn(),
+  hasId: jest.fn(),
+  remove: jest.fn(),
+  softRemove: jest.fn(),
+  recover: jest.fn(),
+  reload: jest.fn(),
+};
+
+export const generateMockDigitalReceiptRepository = () => ({
+  findOne: jest.fn(),
+  create: jest.fn(),
+});

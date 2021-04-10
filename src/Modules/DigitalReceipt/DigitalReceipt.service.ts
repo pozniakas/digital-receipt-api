@@ -12,11 +12,17 @@ export class DigitalReceiptService {
     private digitalReceiptRepository: Repository<DigitalReceipt>,
   ) {}
 
-  generateDigitalReceipt(digitalReceipt: IDigitalReceipt) {
+  async generateDigitalReceipt(digitalReceiptInfo: IDigitalReceipt) {
+    const digitalReceipt = this.digitalReceiptRepository.create(
+      digitalReceiptInfo,
+    );
+
+    await digitalReceipt.save();
+
     return digitalReceipt;
   }
 
-  getDigitalReceipt(id: string) {
-    return id;
+  async getDigitalReceipt(id: string) {
+    return this.digitalReceiptRepository.findOne({ id });
   }
 }
