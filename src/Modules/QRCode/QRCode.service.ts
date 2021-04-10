@@ -4,7 +4,7 @@ import QRCode from 'qrcode';
 import { CryptographyService } from '#Modules/Cryptography';
 
 @Injectable()
-export class QrCodeService {
+export class QRCodeService {
   constructor(private cryptographyService: CryptographyService) {}
 
   addDataToQrCode(data: string) {
