@@ -16,12 +16,11 @@ describe('In QRCodeService', () => {
       qrCodeService = await module.get(QRCodeService);
     });
 
-    const data = 'Test';
     it('should return encrypted base64 image', async () => {
       jest.spyOn(cryptography, 'encryptData').mockReturnValue('data');
-      await qrCodeService.addDataToQRCode(data);
+      await qrCodeService.addDataToQRCode('Test');
 
-      expect(cryptography.encryptData).toBeCalledWith(data);
+      expect(cryptography.encryptData).toBeCalledWith('Test');
       expect(cryptography.encryptData).toBeCalledTimes(1);
     });
   });
