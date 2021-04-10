@@ -1,5 +1,7 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+
 import { DigitalReceiptService } from './DigitalReceipt.service';
+import { TransactionDto } from './DTO/transaction.dto';
 
 @Controller('DigitalReceipt')
 export class DigitalReceiptController {
@@ -9,5 +11,7 @@ export class DigitalReceiptController {
   getReceipt() {}
 
   @Post()
-  generateReceipt() {}
+  generateReceipt(@Body() transactionDto: TransactionDto) {
+    return this.digitalReceiptService.generateDigitalReceipt(transactionDto);
+  }
 }
