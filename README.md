@@ -36,7 +36,3 @@ DB_TYPE=mysql
 - `docker-compose run --rm notification-service sh entrypoint.sh`
 
 - `docker-compose up`
-
-- `docker-compose run --rm digital-receipt-api sh entrypoint.sh`
-
-- `docker-compose up`
