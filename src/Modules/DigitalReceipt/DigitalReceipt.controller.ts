@@ -1,17 +1,21 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 
 import { DigitalReceiptService } from './DigitalReceipt.service';
-import { TransactionDto } from './DTO/transaction.dto';
+import { AuthGuard } from './Guard/customAuthGuard';
+import { IDigitalReceipt } from './types';
 
-@Controller('DigitalReceipt')
+@UseGuards(AuthGuard)
+@Controller('/digital-receipt')
 export class DigitalReceiptController {
   constructor(private digitalReceiptService: DigitalReceiptService) {}
 
-  @Get()
-  getReceipt() {}
+  @Get('/:id')
+  getDigitalReceipt(@Param('id') id: string) {
+    return this.digitalReceiptService.getDigitalReceipt(id);
+  }
 
   @Post()
-  generateReceipt(@Body() transactionDto: TransactionDto) {
-    return this.digitalReceiptService.generateDigitalReceipt(transactionDto);
+  generateDigitalReceipt(@Body() digitalReceipt: IDigitalReceipt) {
+    return this.digitalReceiptService.generateDigitalReceipt(digitalReceipt);
   }
 }
