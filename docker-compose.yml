@@ -1,0 +1,40 @@
+version: '3.4'
+services:
+  digital-receipt-api:
+    image: node:14-alpine
+    env_file: .env
+    volumes:
+      - type: bind
+        source: ./
+        target: /app
+      - type: volume
+        source: nodemodules # name of the volume, see below
+        target: /app/node_modules
+        volume:
+          nocopy: true
+    working_dir: /app
+    command: npm run start:dev -- --debug 0.0.0.0:9229
+    ports:
+      - '${PORT}:${PORT}'
+      - '${DEBUG_PORT}:${DEBUG_PORT}'
+    environment:
+      - NODE_ENV=development
+  mysql:
+    image: mysql:8
+    env_file:
+      - .env
+    logging:
+      driver: 'none'
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+    ports:
+      - '${DB_PORT}:${DB_PORT}'
+    command:
+      [
+        'mysqld',
+        '--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_unicode_ci',
+      ]
+volumes:
+  nodemodules:
