@@ -1,4 +1,5 @@
 # Digital Receipt API
+- Install Docker in your computer
 
 - `cp .env.example .env`
 
