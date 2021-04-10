@@ -7,6 +7,6 @@ export class StartController {
 
   @Get()
   getHello(): Promise<string> {
-    return this.qrCodeService.addDataToQrCode('Tavo Tevas');
+    return this.qrCodeService.addDataToQRCode('Tavo Tevas');
   }
 }
