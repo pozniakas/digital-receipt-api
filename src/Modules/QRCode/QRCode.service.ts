@@ -5,8 +5,10 @@ import { Cryptography } from './Cryptography';
 
 @Injectable()
 export class QRCodeService {
-  addDataToQrCode(data: string) {
-    const encryptedData = new Cryptography(data).encryptData();
+  constructor(private cryptography: Cryptography) {}
+
+  addDataToQRCode(data: string) {
+    const encryptedData = this.cryptography.encryptData(data);
     return QRCode.toDataURL(encryptedData);
   }
 }
