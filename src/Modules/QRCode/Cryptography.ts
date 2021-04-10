@@ -1,4 +1,4 @@
-const Cryptr = require('cryptr');
+import Cryptr from 'cryptr';
 
 const secret = process.env.CRYPTO_SECRET;
 
