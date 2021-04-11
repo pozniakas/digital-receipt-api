@@ -7,7 +7,9 @@ export interface IDigitalReceipt {
   paymentMethod: PaymentMethod;
 }
 
-export interface IDigitalReceiptEntity extends IDigitalReceipt, BaseEntity {}
+export interface IDigitalReceiptEntity extends IDigitalReceipt, BaseEntity {
+  id: string;
+}
 
 export enum PaymentMethod {
   CASH = 'CASH',

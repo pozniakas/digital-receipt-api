@@ -4,12 +4,14 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 import { DigitalReceipt } from './DigitalReceipt.entity';
 import { IDigitalReceipt } from './types';
+import { QRCodeService } from '#Modules/QRCode';
 
 @Injectable()
 export class DigitalReceiptService {
   constructor(
     @InjectRepository(DigitalReceipt)
     private digitalReceiptRepository: Repository<DigitalReceipt>,
+    private qrCodeService: QRCodeService,
   ) {}
 
   async generateDigitalReceipt(digitalReceiptInfo: IDigitalReceipt) {
@@ -19,7 +21,7 @@ export class DigitalReceiptService {
 
     await digitalReceipt.save();
 
-    return digitalReceipt;
+    return this.qrCodeService.addDataToQRCode(digitalReceipt.id);
   }
 
   async getDigitalReceipt(id: string) {
