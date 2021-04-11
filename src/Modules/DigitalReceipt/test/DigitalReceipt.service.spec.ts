@@ -4,7 +4,7 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 
 import { DigitalReceipt } from '#Modules/DigitalReceipt/DigitalReceipt.entity';
 import { DigitalReceiptService } from '#Modules/DigitalReceipt/DigitalReceipt.service';
-import { Cryptography, QRCodeService } from '#Modules/QRCode';
+import { QRCodeService } from '#Modules/QRCode';
 
 import {
   generateMockDigitalReceiptRepository,
@@ -26,7 +26,6 @@ describe('In DigitalReceiptService', () => {
         },
         DigitalReceiptService,
         { provide: QRCodeService, useFactory: generateMockqrCodeService },
-        Cryptography,
       ],
     }).compile();
 
