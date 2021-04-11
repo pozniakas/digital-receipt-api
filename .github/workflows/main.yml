@@ -14,6 +14,9 @@ jobs:
         with:
           java-version: 1.8
 
+      - name: NPM Packages
+        run: npm install
+        
       # Execute unit tests
       - name: Unit Test
         run: npm test
