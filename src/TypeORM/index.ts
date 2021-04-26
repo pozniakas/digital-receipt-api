@@ -12,7 +12,7 @@ const credentials = {
 };
 
 const options: ConnectionOptions = {
-  entities: ['dist/Module/**/*.js'],
+  entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   synchronize: false,
   dropSchema: false,
   migrationsRun: false,
