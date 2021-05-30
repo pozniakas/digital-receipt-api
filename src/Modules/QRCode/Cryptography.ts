@@ -10,4 +10,8 @@ export class Cryptography extends Cryptr {
   public encryptData(data: string): string {
     return this.encrypt(data);
   }
+
+  public decryptData(data: string): string {
+    return this.decrypt(data);
+  }
 }
